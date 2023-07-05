@@ -1,0 +1,84 @@
+{% extends 'frontend.html' %} {% block title %}Homepage{% endblock title %}
+ {%block content %}
+<div
+  id="carouselExampleAutoplaying"
+  class="carousel slide carousel-dark"
+  data-bs-ride="carousel"
+>
+  <div class="carousel-inner">
+    <div class="carousel-item active">
+      <img
+        src="https://itti.com.np/pub/media/wysiwyg/NewYearOffer20802.jpg"
+        class="d-block w-100"
+        alt="..."
+      />
+    </div>
+    <div class="carousel-item">
+      <img
+        src="https://itti.com.np/pub/media/wysiwyg/Asus-ROG-Strix-Scar-15-2021-G533WS_1.jpg"
+        class="d-block w-100"
+        alt="..."
+      />
+    </div>
+    <div class="carousel-item">
+      <img
+        src="https://itti.com.np/pub/media/wysiwyg/Apple-M1-MacBook-Pro-copy.jpg"
+        class="d-block w-100"
+        alt="..."
+      />
+    </div>
+  </div>
+  <button
+    class="carousel-control-prev"
+    type="button"
+    data-bs-target="#carouselExampleAutoplaying"
+    data-bs-slide="prev"
+  >
+    <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+    <span class="visually-hidden">Previous</span>
+  </button>
+  <button
+    class="carousel-control-next"
+    type="button"
+    data-bs-target="#carouselExampleAutoplaying"
+    data-bs-slide="next"
+  >
+    <span class="carousel-control-next-icon" aria-hidden="true"></span>
+    <span class="visually-hidden">Next</span>
+  </button>
+</div>
+
+<div class="container">
+  <h1 class="text-center text-muted my-3 text-decoration-underline">
+    Products
+  </h1>
+  
+  <div class="container-fluid mt-50">
+    
+                                
+                              
+    <div class="row row-cols-1 row-cols-md-3 ">
+      {% for p in posts  %}
+      <div class="col-md-4">
+
+        <div class="product-card mb-30">
+<div class="product-badge bg-success border-default text-body">Available</div><a class="product-thumb" href="#" data-abc="true"><img src= /{{p.image_url}} alt="Product"></a>
+<div class="product-card-body">
+<div class="product-category"><a href="#" data-abc="true">{{p.category_name  }} </a></div>
+<h3 class="product-title"><a href="#" data-abc="true"> {{p.product_name | truncatewords:4 | safe}} </a></h3>
+<h4 class="product-price">NRS {{p.product_price}}</h4>
+</div>
+<div class="product-button-group"><a class="product-button btn-wishlist" href="#" data-abc="true"><i class="fa fa-heart-o"></i><span>Wishlist</span></a><a class="product-button btn-compare" href="#" data-abc="true"><i class="fa fa-retweet"></i><span>Compare</span></a>
+  <a class="product-button" href="/productdetail/{{p.id}}" data-abc="true"><i class="fa fa-angle-right"></i><span>Details</span></a></div>
+</div>
+        
+      </div>
+      {% endfor %}
+    </div>
+
+  </div>
+
+
+</div>
+
+{% endblock content %}

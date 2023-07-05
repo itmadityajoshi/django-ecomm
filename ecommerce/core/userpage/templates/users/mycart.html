@@ -1,0 +1,56 @@
+{% extends 'frontend.html' %}
+
+{% load crispy_forms_tags %}
+
+{% block title %}
+  My cart
+{% endblock %}
+
+{% block content %}
+
+  {% if messages %}
+    {% for msg in messages %}
+      {% if msg.level == DEFAULT_MESSAGE_LEVELS.SUCCESS %}
+        <div class="alert alert-success">{{ msg }}</div>
+      {% endif %}
+
+      {% if msg.level == DEFAULT_MESSAGE_LEVELS.ERROR %}
+        <div class="alert alert-danger">{{ msg }}</div>
+      {% endif %}
+    {% endfor %}
+  {% endif %}
+
+      
+<table width="70%" class="table table-bordered" style="text-align: center;  justify-content: center;">
+    <tr>
+
+    <th>Product Image</th>
+    <th>Product Name</th>
+    <th>Product Price</th>
+    <th>Product stock</th>
+    <th>Product Descriptions</th>
+    <th>Actions</th>
+</tr>
+
+<tr>
+    {% for post in cart %}
+    <td> <img src= /{{post.product.image_url}} height="200" width="250" alt="" srcset=""> </td>
+    <td> {{post.product.product_name}} </td>
+    <td> {{post.product.product_price}} </td>        
+    <td> {{post.product.product_stock}} </td>        
+    <td> {{post.product.product_description}} </td>      
+    <td>  
+        <a href="/order/{{post.product.id}}/{{post.id}}"><button class="btn btn-primary " > Buy</button></a>
+        <a href="/deletecart/{{post.id}}">  <button class="btn btn-danger" > Delete</button> </a>
+    </td>  
+
+</tr>
+    {% endfor %}
+
+
+
+
+</table>
+
+  
+{% endblock %}

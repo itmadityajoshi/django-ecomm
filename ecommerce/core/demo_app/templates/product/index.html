@@ -1,0 +1,56 @@
+{% extends 'layouts.html' %}
+{% block title %} Show Products {% endblock title %}
+
+
+{% block content %}
+
+
+
+
+{% if messages %}
+{% for msg in messages %}
+  {% if msg.level == DEFAULT_MESSAGE_LEVELS.SUCCESS %}
+    <div class="alert alert-success">{{ msg }}</div>
+  {% endif %}
+
+  {% if msg.level == DEFAULT_MESSAGE_LEVELS.ERROR %}
+    <div class="alert alert-danger">{{ msg }}</div>
+  {% endif %}
+{% endfor %}
+ {% endif %}
+
+
+
+<table width="70%" class="table table-bordered" style="text-align: center;  justify-content: center;">
+        <tr>
+
+        <th>Product Image</th>
+        <th>Product Name</th>
+        <th>Product Price</th>
+        <th>Product stock</th>
+        <th>Product Descriptions</th>
+        <th>Actions</th>
+    </tr>
+
+    <tr>
+        {% for post in products %}
+        <td> <img src= /{{post.image_url}} height="200" width="250" alt="" srcset=""> </td>
+        <td> {{post.product_name}} </td>
+        <td> {{post.product_price}} </td>        
+        <td> {{post.product_stock}} </td>        
+        <td> {{post.product_description}} </td>      
+        <td>  
+            <a href="/demo/update_product/{{post.id}}"><button class="btn btn-primary " > Update</button></a>
+            <a href="/demo/delete_product/{{post.id}}">  <button class="btn btn-danger" > Delete</button> </a>
+        </td>  
+
+    </tr>
+        {% endfor %}
+
+
+
+
+</table>
+
+{% endblock  %}
+

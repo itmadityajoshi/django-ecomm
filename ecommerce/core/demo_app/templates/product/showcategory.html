@@ -1,0 +1,29 @@
+{% extends 'layouts.html' %}
+{% block title %}show category {% endblock title %}
+
+{% block content %}
+
+<div class="container mx-auto mt-5 text-center">
+    <table class="table table-bordered">
+
+
+    <tr>
+        <th>Category Name</th>
+        <th>Action</th>
+    </tr>
+
+    {% for c in form  %}
+    <tr>
+        <th>{{c.category_name}}</th>
+        <td>
+          <a href="/demo/update_category/{{c.id}}"> <button class="btn btn-primary">Update</button> </a> 
+          <a href="/demo/delete_category/{{c.id}}"> <button class="btn btn-danger">Delete</button> </a> 
+        </td>
+        
+    </tr>
+        {% endfor %}
+</table> 
+  
+</div>
+
+{% endblock content %}
